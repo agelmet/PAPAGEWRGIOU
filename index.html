@@ -134,11 +134,12 @@
 
         /* Glass Nav */
         .nav-scrolled {
-            background: rgba(244, 246, 249, 0.95);
+            background: rgba(244, 246, 249, 0.98);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(176, 172, 171, 0.2);
             padding-top: 1rem !important;
             padding-bottom: 1rem !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
     </style>
     
@@ -151,6 +152,7 @@
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 px-6 lg:px-12">
         <div class="max-w-screen-2xl mx-auto flex justify-between items-center relative">
             
+            <!-- Logo -->
             <a href="#" class="group relative z-[70]">
                 <img src="https://github.com/agelmet/PAPAGEWRGIOU/blob/main/logopap.jpg?raw=true" 
                      alt="Εύα Παπαγεωργίου Logo" 
@@ -168,24 +170,22 @@
             </div>
 
             <!-- Mobile Nav Toggle -->
-            <button class="lg:hidden z-[70] text-luxe-dark hover:text-luxe-primary focus:outline-none transition-colors" id="mobile-menu-btn" aria-label="Toggle Menu">
-                <div id="menu-icon" class="flex items-center justify-center">
-                    <i data-lucide="menu" class="w-8 h-8"></i>
-                </div>
-                <div id="close-icon" class="hidden items-center justify-center">
-                    <i data-lucide="x" class="w-8 h-8"></i>
-                </div>
+            <button class="lg:hidden z-[70] text-luxe-dark hover:text-luxe-primary focus:outline-none transition-colors relative w-10 h-10 flex items-center justify-center" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <i data-lucide="menu" id="menu-icon" class="w-8 h-8 absolute transition-all duration-300 transform scale-100 opacity-100"></i>
+                <i data-lucide="x" id="close-icon" class="w-8 h-8 absolute transition-all duration-300 transform scale-0 opacity-0"></i>
             </button>
         </div>
 
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 bg-luxe-light z-[60] hidden flex-col items-center justify-center space-y-8 opacity-0 transition-opacity duration-300">
-            <a href="#about" class="text-xl tracking-[0.2em] uppercase text-luxe-dark mobile-link hover:text-luxe-primary transition-colors">Η Ψυχολογος</a>
-            <a href="#services" class="text-xl tracking-[0.2em] uppercase text-luxe-dark mobile-link hover:text-luxe-primary transition-colors">Υπηρεσιες</a>
-            <a href="#philosophy" class="text-xl tracking-[0.2em] uppercase text-luxe-dark mobile-link hover:text-luxe-primary transition-colors">Φιλοσοφια</a>
-            <a href="#roadmap" class="text-xl tracking-[0.2em] uppercase text-luxe-dark mobile-link hover:text-luxe-primary transition-colors">Η Πορεια</a>
-            <a href="#space" class="text-xl tracking-[0.2em] uppercase text-luxe-dark mobile-link hover:text-luxe-primary transition-colors">Ο Χωρος</a>
-            <a href="https://www.doctoranytime.gr/d/Psychologos/papageorgiou-eulampia" target="_blank" class="px-10 py-4 mt-6 bg-luxe-primary text-white text-sm tracking-[0.15em] uppercase font-medium shadow-lg shadow-luxe-primary/30 w-10/12 max-w-sm text-center">Κλειστε Ραντεβου</a>
+        <!-- Mobile Menu Overlay (Always in DOM, controlled via opacity & pointer-events) -->
+        <div id="mobile-menu" class="fixed inset-0 bg-luxe-light z-[60] flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-300 ease-in-out">
+            <div class="flex flex-col items-center justify-center space-y-8 w-full px-6">
+                <a href="#about" class="text-xl tracking-[0.2em] uppercase text-luxe-dark hover:text-luxe-primary transition-colors whitespace-nowrap text-center mobile-link">Η Ψυχολογος</a>
+                <a href="#services" class="text-xl tracking-[0.2em] uppercase text-luxe-dark hover:text-luxe-primary transition-colors whitespace-nowrap text-center mobile-link">Υπηρεσιες</a>
+                <a href="#philosophy" class="text-xl tracking-[0.2em] uppercase text-luxe-dark hover:text-luxe-primary transition-colors whitespace-nowrap text-center mobile-link">Φιλοσοφια</a>
+                <a href="#roadmap" class="text-xl tracking-[0.2em] uppercase text-luxe-dark hover:text-luxe-primary transition-colors whitespace-nowrap text-center mobile-link">Η Πορεια</a>
+                <a href="#space" class="text-xl tracking-[0.2em] uppercase text-luxe-dark hover:text-luxe-primary transition-colors whitespace-nowrap text-center mobile-link">Ο Χωρος</a>
+                <a href="https://www.doctoranytime.gr/d/Psychologos/papageorgiou-eulampia" target="_blank" class="mt-4 px-10 py-4 bg-luxe-primary text-white text-sm tracking-[0.15em] uppercase font-medium shadow-lg shadow-luxe-primary/30 w-full max-w-[280px] text-center rounded-sm mobile-link">Κλειστε Ραντεβου</a>
+            </div>
         </div>
     </nav>
 
@@ -317,7 +317,6 @@
 
     <!-- Philosophy Section -->
     <section id="philosophy" class="py-24 lg:py-32 px-6 lg:px-12 bg-luxe-dark text-white relative overflow-hidden">
-        <!-- Subtle background shapes -->
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-luxe-primary/20 to-transparent pointer-events-none"></div>
         <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-luxe-primary/30 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -363,7 +362,6 @@
             </div>
             
             <div class="relative max-w-4xl mx-auto">
-                <!-- Animated Vertical Line -->
                 <div class="absolute left-[27px] md:left-1/2 top-0 bottom-0 w-[2px] roadmap-line md:-translate-x-1/2 z-0"></div>
                 
                 <!-- Step 1 -->
@@ -757,7 +755,7 @@
     </footer>
 
     <!-- Lightbox Element -->
-    <div id="lightbox" class="fixed inset-0 z-[100] flex items-center justify-center cursor-zoom-out hidden opacity-0 transition-opacity duration-300 bg-luxe-dark/95 backdrop-blur-sm" onclick="closeLightbox()">
+    <div id="lightbox" class="fixed inset-0 z-[100] flex items-center justify-center cursor-zoom-out opacity-0 pointer-events-none transition-opacity duration-300 bg-luxe-dark/95 backdrop-blur-sm" onclick="closeLightbox()">
         <button class="absolute top-6 right-6 md:top-8 md:right-8 text-white/50 hover:text-white transition-colors z-[101]" aria-label="Close">
             <i data-lucide="x" class="w-10 h-10 stroke-[1.5]"></i>
         </button>
@@ -781,7 +779,7 @@
             }
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle - Uses absolute robust opacity toggling
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -793,31 +791,27 @@
             isMenuOpen = !isMenuOpen;
             
             if (isMenuOpen) {
-                mobileMenu.classList.remove('hidden');
-                mobileMenu.classList.add('flex'); // Add flex to fix layout
+                // Show Menu
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
                 document.body.style.overflow = 'hidden';
                 
-                menuIcon.classList.add('hidden');
-                closeIcon.classList.remove('hidden');
-                closeIcon.classList.add('flex');
-
-                setTimeout(() => {
-                    mobileMenu.classList.remove('opacity-0');
-                    mobileMenu.classList.add('opacity-100');
-                }, 10);
+                // Animate icons
+                menuIcon.classList.remove('scale-100', 'opacity-100');
+                menuIcon.classList.add('scale-0', 'opacity-0');
+                closeIcon.classList.remove('scale-0', 'opacity-0');
+                closeIcon.classList.add('scale-100', 'opacity-100');
             } else {
-                mobileMenu.classList.remove('opacity-100');
-                mobileMenu.classList.add('opacity-0');
+                // Hide Menu
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
                 document.body.style.overflow = '';
                 
-                closeIcon.classList.add('hidden');
-                closeIcon.classList.remove('flex');
-                menuIcon.classList.remove('hidden');
-
-                setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('flex'); // Remove flex
-                }, 500);
+                // Animate icons
+                menuIcon.classList.add('scale-100', 'opacity-100');
+                menuIcon.classList.remove('scale-0', 'opacity-0');
+                closeIcon.classList.add('scale-0', 'opacity-0');
+                closeIcon.classList.remove('scale-100', 'opacity-100');
             }
         }
 
@@ -852,32 +846,30 @@
 
         function openLightbox(src) {
             lightboxImg.src = src;
-            lightbox.classList.remove('hidden');
+            lightbox.classList.remove('opacity-0', 'pointer-events-none');
+            lightbox.classList.add('opacity-100', 'pointer-events-auto');
             document.body.style.overflow = 'hidden';
             
             setTimeout(() => {
-                lightbox.classList.remove('opacity-0');
-                lightbox.classList.add('opacity-100');
                 lightboxImg.classList.remove('scale-95');
                 lightboxImg.classList.add('scale-100');
             }, 10);
         }
 
         function closeLightbox() {
-            lightbox.classList.remove('opacity-100');
-            lightbox.classList.add('opacity-0');
+            lightbox.classList.remove('opacity-100', 'pointer-events-auto');
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
             lightboxImg.classList.remove('scale-100');
             lightboxImg.classList.add('scale-95');
             document.body.style.overflow = '';
             
             setTimeout(() => {
-                lightbox.classList.add('hidden');
                 lightboxImg.src = '';
             }, 300);
         }
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+            if (e.key === 'Escape' && lightbox.classList.contains('opacity-100')) {
                 closeLightbox();
             }
         });
