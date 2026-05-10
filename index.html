@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Εύα Παπαγεωργίου | Ψυχολόγος & Συστημική Ψυχοθεραπεύτρια</title>
-    <meta name="description" content="Η Εύα Παπαγεωργίου είναι αδειούχος Ψυχολόγος και Συστημική-Οικογενειακή Ψυχοθεραπεύτρια στη Θεσσαλονίκη. Εξειδίκευση στη Διαχείριση Πένθους, θεραπεία ζεύγους & άγχος.">
+    <title>Εύα Παπαγεωργίου | Ψυχολόγος & Συστημική-Οικογενειακή Ψυχοθεραπεύτρια</title>
+    <meta name="description" content="Η Εύα Παπαγεωργίου είναι αδειούχος Ψυχολόγος και Συστημική-Οικογενειακή Ψυχοθεραπεύτρια στη Θεσσαλονίκη, με εξειδίκευση στη διαχείριση πένθους (ΜΕΡΙΜΝΑ).">
     
     <!-- Favicon -->
     <link rel="icon" href="https://github.com/agelmet/PAPAGEWRGIOU/blob/main/logopap.jpg?raw=true" type="image/jpeg">
@@ -23,15 +23,13 @@
                 extend: {
                     colors: {
                         luxe: {
-                            blue: '#0459a5',
-                            blueDark: '#034482',
-                            silver: '#b0acab',
-                            silverLight: '#e8e7e6',
-                            black: '#0a0a0a',
-                            dark: '#1c1c1c',
-                            gray: '#5a5a5a',
-                            light: '#fcfcfc',
-                            border: '#e5e5e5'
+                            primary: '#0459a5', /* Deep Blue */
+                            secondary: '#b0acab', /* Warm Grey */
+                            dark: '#0a1128', /* Very Dark Blue/Black */
+                            gray: '#5a6575', /* Muted Text Gray */
+                            light: '#f4f6f9', /* Off-white background */
+                            white: '#ffffff',
+                            border: '#e2e6eb'
                         }
                     },
                     fontFamily: {
@@ -39,32 +37,32 @@
                         serif: ['Cormorant Garamond', 'serif'],
                     },
                     animation: {
-                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
-                        'slow-zoom': 'slowZoom 20s ease-in-out infinite alternate',
-                        'image-pan': 'imagePan 25s ease-in-out infinite alternate',
-                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'slow-zoom': 'slowZoom 25s ease-in-out infinite alternate',
+                        'float': 'float 8s ease-in-out infinite',
+                        'glow-pulse': 'glowPulse 4s ease-in-out infinite alternate',
                         'marquee': 'marquee 120s linear infinite',
                     },
                     keyframes: {
                         fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
                         slowZoom: {
                             '0%': { transform: 'scale(1)' },
-                            '100%': { transform: 'scale(1.1)' },
-                        },
-                        imagePan: {
-                            '0%': { objectPosition: '0% 50%', transform: 'scale(1.05)' },
-                            '100%': { objectPosition: '100% 50%', transform: 'scale(1.1)' },
+                            '100%': { transform: 'scale(1.12)' },
                         },
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-15px)' },
                         },
+                        glowPulse: {
+                            '0%': { boxShadow: '0 0 20px rgba(4, 89, 165, 0.1)' },
+                            '100%': { boxShadow: '0 0 50px rgba(4, 89, 165, 0.4)' },
+                        },
                         marquee: {
                             '0%': { transform: 'translateX(0%)' },
-                            '100%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(-50%)' },
                         }
                     }
                 }
@@ -73,7 +71,174 @@
     </script>
 
     <style>
-        /*```html
+        /* Base & Scrollbar */
+        body { background-color: #f4f6f9; color: #0a1128; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f4f6f9; }
+        ::-webkit-scrollbar-thumb { background: #b0acab; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0459a5; }
+        
+        /* Typography */
+        .text-balance { text-wrap: balance; }
+        
+        /* Drawn Lines Effects */
+        .drawn-line-bottom {
+            position: relative;
+        }
+        .drawn-line-bottom::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #0459a5;
+            transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .group:hover .drawn-line-bottom::after { width: 100%; }
+
+        .drawn-border-box {
+            position: relative;
+            border: 1px solid transparent;
+            transition: all 0.5s ease;
+        }
+        .drawn-border-box::before, .drawn-border-box::after {
+            content: '';
+            position: absolute;
+            background: #b0acab;
+            transition: all 0.6s ease;
+        }
+        .drawn-border-box::before { top: 0; left: 0; width: 0; height: 1px; }
+        .drawn-border-box::after { bottom: 0; right: 0; width: 0; height: 1px; }
+        .drawn-border-box:hover::before, .drawn-border-box:hover::after { width: 100%; background: #0459a5; }
+        
+        /* Reveal Animations */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+
+        /* Roadmap Animated Line */
+        .roadmap-line {
+            background: linear-gradient(to bottom, #f4f6f9 0%, #0459a5 50%, #f4f6f9 100%);
+            background-size: 100% 200%;
+            animation: lineFlow 4s linear infinite;
+        }
+        @keyframes lineFlow {
+            0% { background-position: 0 -100%; }
+            100% { background-position: 0 100%; }
+        }
+
+        /* Lightbox */
+        #lightbox {
+            opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(10, 17, 40, 0.95);
+        }
+        #lightbox.active { opacity: 1; pointer-events: auto; }
+        #lightbox img { transform: scale(0.95); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        #lightbox.active img { transform: scale(1); }
+
+        /* Marquee Container */
+        .marquee-container {
+            display: flex;
+            width: fit-content;
+        }
+        .marquee-wrapper:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+
+        /* Glass Nav */
+        .nav-scrolled {
+            background: rgba(244, 246, 249, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(176, 172, 171, 0.2);
+        }
+    </style>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="font-sans antialiased selection:bg-luxe-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 px-6 lg:px-12">
+        <div class="max-w-screen-2xl mx-auto flex justify-between items-center relative">
+            <a href="#" class="group relative z-[60]">
+                <img src="https://github.com/agelmet/PAPAGEWRGIOU/blob/main/logopap.jpg?raw=true" 
+                     alt="Εύα Παπαγεωργίου Logo" 
+                     class="h-16 md:h-20 w-auto object-contain drop-shadow-[0_4px_15px_rgba(0,0,0,0.1)] transform group-hover:scale-105 transition-all duration-500">
+            </a>
+            
+            <div class="hidden lg:flex items-center space-x-12 z-[60]">
+                <a href="#about" class="text-xs tracking-[0.2em] uppercase font-medium text-luxe-dark hover:text-luxe-primary transition-colors group"><span class="drawn-line-bottom pb-1">Η Ψυχολογος</span></a>
+                <a href="#services" class="text-xs tracking-[0.2em] uppercase font-medium text-luxe-dark hover:text-luxe-primary transition-colors group"><span class="drawn-line-bottom pb-1">Υπηρεσιες</span></a>
+                <a href="#philosophy" class="text-xs tracking-[0.2em] uppercase font-medium text-luxe-dark hover:text-luxe-primary transition-colors group"><span class="drawn-line-bottom pb-1">Φιλοσοφια</span></a>
+                <a href="#roadmap" class="text-xs tracking-[0.2em] uppercase font-medium text-luxe-dark hover:text-luxe-primary transition-colors group"><span class="drawn-line-bottom pb-1">Η Πορεια</span></a>
+                <a href="#space" class="text-xs tracking-[0.2em] uppercase font-medium text-luxe-dark hover:text-luxe-primary transition-colors group"><span class="drawn-line-bottom pb-1">Ο Χωρος</span></a>
+                <a href="#contact" class="px-8 py-4 bg-luxe-primary text-white text-xs tracking-[0.15em] uppercase font-medium hover:bg-luxe-dark transition-colors duration-300 shadow-lg shadow-luxe-primary/20 hover:shadow-xl hover:-translate-y-0.5 transform">Κλειστε Ραντεβου</a>
+            </div>
+
+            <button class="lg:hidden z-[60] text-luxe-dark hover:text-luxe-primary relative w-8 h-8 focus:outline-none transition-colors" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <span id="menu-icon" class="absolute inset-0 transition-all duration-300 transform rotate-0 scale-100 opacity-100">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </span>
+                <span id="close-icon" class="absolute inset-0 transition-all duration-300 transform rotate-90 scale-0 opacity-0">
+                    <i data-lucide="x" class="w-8 h-8"></i>
+                </span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed inset-0 bg-[#f4f6f9] z-50 hidden flex-col items-center justify-center space-y-8 opacity-0 transition-opacity duration-500">
+            <a href="#about" class="text-xl tracking-[0.2em] uppercase text-luxe-dark mobile-link hover:text-luxe-primary transition-colors">Η Ψυχολογος</a>
+            <a href="#services" class="text-xl tracking-[0.2em] uppercase text-luxe-dark mobile-link hover:text-luxe-primary transition-colors">Υπηρεσιες</a>
+            <a href="#philosophy" class="text-xl tracking-[0.2em] uppercase text-luxe-dark mobile-link hover:text-luxe-primary transition-colors">Φιλοσοφια</a>
+            <a href="#roadmap" class="text-xl tracking-[0.2em] uppercase text-luxe-dark mobile-link hover:text-luxe-primary transition-colors">Η Πορεια</a>
+            <a href="#space" class="text-xl tracking-[0.2em] uppercase text-luxe-dark mobile-link hover:text-luxe-primary transition-colors">Ο Χωρος</a>
+            <a href="#contact" class="px-10 py-4 mt-6 bg-luxe-primary text-white text-sm tracking-[0.15em] uppercase font-medium mobile-link shadow-lg shadow-luxe-primary/30">Κλειστε Ραντεβου</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-luxe-dark">
+        <div class="absolute inset-0 z-0">
+            <img src="https://raw.githubusercontent.com/agelmet/PAPAGEWRGIOU/refs/heads/main/2025-07-30.jpg" 
+                 alt="Χώρος Γραφείου Εύα Παπαγεωργίου" 
+                 class="w-full h-full object-cover object-center opacity-50 animate-slow-zoom mix-blend-luminosity">
+        </div>
+        <div class="absolute inset-0 z-10 bg-gradient-to-b from-luxe-dark/40 via-luxe-primary/20 to-luxe-dark/90"></div>
+        
+        <div class="relative z-20 text-center px-6 max-w-5xl mx-auto flex flex-col items-center mt-20">
+            <span class="text-luxe-secondary text-xs md:text-sm tracking-[0.3em] uppercase mb-6 font-medium animate-fade-in-up" style="animation-delay: 0.2s; opacity: 0;">
+                Εύα Παπαγεωργίου | Ψυχολόγος
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-tight md:leading-tight mb-8 text-balance drop-shadow-2xl animate-fade-in-up" style="animation-delay: 0.5s; opacity: 0;">
+                Συστημική Ψυχοθεραπεία:<br>Υφαίνοντας ξανά τον Ιστό των Σχέσεων και της Ζωής
+            </h1>
+            <div class="w-px h-24 bg-white/30 animate-fade-in-up mx-auto" style="animation-delay: 1s; opacity: 0;"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 px-6 lg:px-12 bg-white relative">
+        <div class="max-w-screen-xl mx-auto grid lg:grid-cols-12 gap-16 items-center">
+            <div class="lg:col-span-5 relative reveal">
+                <!-- Image Wrapper with Motion & Glow Effects -->
+                <div class="aspect-[3/4] relative rounded-lg overflow-hidden animate-glow-pulse">
+                    <img src="https://raw.githubusercontent.com/agelmet/PAPAGEWRGIOU/refs/heads/main/2025-07-31.jpg" 
+                         alt="Εύα Παπαγεωργίου" 
+                         class="w-full h-full object-cover animate-float transform hover:scale-[1.03] transition-transform duration-1000 origin-center">
+                    <!-- Minimalist inner overlay -->
+                    <div class="absolute inset-0 border border-luxe-primary/10 rounded-lg pointer-events-none mix-blend-overlay"></div>
+                </div>
+                <!-- Decorative background elements -->
+                <div class="absolute -z-10 top-10 -right-10 w-full h-full border border-luxe-secondary/30 rounded-lg animate-float" style="animation-delay: 1s;"></div>
+            </div>
+            
+            <div class="lg:col-span-7 reveal delay-200">
+                <span class="text-xs tracking-[0.2```html
 <!DOCTYPE html>
 <html lang="el" class="scroll-smooth">
 <head>
@@ -219,7 +384,7 @@
         /* Marquee Container */
         .marquee-container {
             display: flex;
-            width: 200%;
+            width: fit-content;
         }
         .marquee-wrapper:hover .animate-marquee {
             animation-play-state: paused;
@@ -865,7 +1030,7 @@
                     <p class="text-luxe-secondary font-light text-sm max-w-sm mb-10 leading-relaxed">
                         Το πρώτο βήμα είναι συχνά το πιο δύσκολο, αλλά είναι και το πιο σημαντικό. Επικοινωνήστε για να προγραμματίσουμε τη συνάντησή μας.
                     </p>
-                    <a href="[https://www.doctoranytime.gr/d/Psychologos/papageorgiou-eulampia](https://www.doctoranytime.gr/d/Psychologos/papageorgiou-eulampia)" target="_blank" class="inline-flex items-center justify-center bg-luxe-primary text-white px-8 py-4 text-xs tracking-[0.15em] uppercase font-medium hover:bg-white hover:text-luxe-dark transition-colors duration-300">
+                    <a href="[https://www.doctoranytime.gr/d/Psychologos/papageorgiou-eulampia](https://www.doctoranytime.gr/d/Psychologos/papageorgiou-eulampia)" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-luxe-primary text-white px-8 py-4 text-xs tracking-[0.15em] uppercase font-medium hover:bg-white hover:text-luxe-dark transition-colors duration-300">
                         Doctoranytime Profile
                     </a>
                 </div>
