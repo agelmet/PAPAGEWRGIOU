@@ -38,6 +38,7 @@
                         'float': 'float 8s ease-in-out infinite',
                         'glow-pulse': 'glowPulse 4s ease-in-out infinite alternate',
                         'marquee': 'marquee 120s linear infinite',
+                        'slow-zoom': 'slowZoom 25s ease-in-out infinite alternate',
                     },
                     keyframes: {
                         fadeInUp: {
@@ -55,6 +56,10 @@
                         marquee: {
                             '0%': { transform: 'translateX(0%)' },
                             '100%': { transform: 'translateX(-50%)' },
+                        },
+                        slowZoom: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.12)' },
                         }
                     }
                 }
@@ -118,7 +123,7 @@
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 px-6 lg:px-12">
-        <div class="max-w-screen-2xl mx-auto flex justify-end md:justify-center items-center relative">
+        <div class="max-w-screen-2xl mx-auto flex justify-end lg:justify-center items-center relative">
             
             <!-- Desktop Nav -->
             <div class="hidden lg:flex items-center justify-center space-x-10 z-[60] w-full">
@@ -151,13 +156,13 @@
     <!-- Hero Section -->
     <section class="relative h-screen w-full flex items-end justify-start overflow-hidden bg-luxe-light">
         <div class="absolute inset-0 z-0">
-            <img src="https://raw.githubusercontent.com/agelmet/PAPAGEWRGIOU/refs/heads/main/2025-07-30.jpg" 
-                 alt="Γραφικό Αρχικής" 
-                 class="w-full h-full object-cover object-center opacity-90 mix-blend-multiply">
+            <img src="https://raw.githubusercontent.com/agelmet/PAPAGEWRGIOU/refs/heads/main/heress.jpg" 
+                 alt="Φόντο Αρχικής" 
+                 class="w-full h-full object-cover object-center animate-slow-zoom">
         </div>
         
         <!-- Subtle gradient to ensure text readability -->
-        <div class="absolute inset-0 z-10 bg-gradient-to-t from-luxe-light/90 via-luxe-light/20 to-transparent"></div>
+        <div class="absolute inset-0 z-10 bg-gradient-to-t from-luxe-light via-luxe-light/30 to-transparent"></div>
         
         <div class="relative z-20 px-8 lg:px-16 pb-24 md:pb-32 w-full max-w-screen-2xl mx-auto">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-luxe-dark leading-tight md:leading-snug text-balance animate-fade-in-up" style="animation-delay: 0.3s; opacity: 0;">
@@ -320,7 +325,7 @@
             
             <div class="marquee-container animate-marquee space-x-6 px-3 py-4">
                 
-                <!-- Review Cards -->
+                <!-- Review Cards (No DoctorAnytime logo) -->
                 <div class="w-80 md:w-96 bg-luxe-light p-8 border border-luxe-border flex-shrink-0 flex flex-col justify-between hover:border-luxe-secondary/40 transition-colors duration-300 rounded-sm">
                     <div>
                         <div class="flex items-center mb-6">
@@ -598,7 +603,7 @@
             }
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle - Uses absolute robust opacity toggling
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
