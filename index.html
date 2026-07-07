@@ -7,12 +7,10 @@
     <title>Παπαγεωργίου Εύα | Ψυχολόγος - Ψυχοθεραπεύτρια</title>
     <meta name="description" content="Η Εύα Παπαγεωργίου είναι αδειούχος Ψυχολόγος και Συστημική-Οικογενειακή Ψυχοθεραπεύτρια στη Θεσσαλονίκη.">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -35,7 +33,6 @@
                     },
                     animation: {
                         'fade-in-up': 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'float': 'float 8s ease-in-out infinite',
                         'glow-pulse': 'glowPulse 4s ease-in-out infinite alternate',
                         'marquee': 'marquee 120s linear infinite',
                     },
@@ -43,10 +40,6 @@
                         fadeInUp: {
                             '0%': { opacity: '0', transform: 'translateY(30px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
                         },
                         glowPulse: {
                             '0%': { boxShadow: '0 0 20px rgba(176, 172, 171, 0.1)' },
@@ -86,16 +79,6 @@
         .delay-100 { transition-delay: 0.1s; }
         .delay-200 { transition-delay: 0.2s; }
 
-        /* Lightbox */
-        #lightbox {
-            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            background: rgba(10, 10, 10, 0.95);
-        }
-        #lightbox.active { opacity: 1; pointer-events: auto; }
-        #lightbox img { transform: scale(0.95); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        #lightbox.active img { transform: scale(1); }
-
         /* Glass Nav */
         .nav-scrolled {
             background: rgba(249, 248, 246, 0.98);
@@ -107,16 +90,13 @@
         }
     </style>
     
-    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="font-sans antialiased selection:bg-luxe-secondary selection:text-white">
 
-    <!-- Navigation -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 px-6 lg:px-12">
         <div class="max-w-screen-2xl mx-auto flex justify-end md:justify-center items-center relative">
             
-            <!-- Desktop Nav -->
             <div class="hidden lg:flex items-center justify-center space-x-10 z-[60] w-full">
                 <a href="#about" class="text-xs tracking-[0.2em] uppercase font-medium text-luxe-dark hover:text-luxe-secondary transition-colors group"><span class="drawn-line-bottom pb-1">Σχετικα με εμενα</span></a>
                 <a href="#services" class="text-xs tracking-[0.2em] uppercase font-medium text-luxe-dark hover:text-luxe-secondary transition-colors group"><span class="drawn-line-bottom pb-1">Υπηρεσιες</span></a>
@@ -125,14 +105,12 @@
                 <a href="#contact" class="px-8 py-3.5 bg-luxe-primary text-white text-xs tracking-[0.15em] uppercase font-medium hover:bg-luxe-secondary hover:text-white transition-colors duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 transform">Επικοινωνια</a>
             </div>
 
-            <!-- Mobile Nav Toggle -->
             <button class="lg:hidden z-[70] text-luxe-dark hover:text-luxe-secondary focus:outline-none transition-colors relative w-10 h-10 flex items-center justify-center" id="mobile-menu-btn" aria-label="Toggle Menu">
                 <i data-lucide="menu" id="menu-icon" class="w-8 h-8 absolute transition-all duration-300 transform scale-100 opacity-100"></i>
                 <i data-lucide="x" id="close-icon" class="w-8 h-8 absolute transition-all duration-300 transform scale-0 opacity-0"></i>
             </button>
         </div>
 
-        <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="fixed inset-0 bg-luxe-light z-[60] flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-300 ease-in-out">
             <div class="flex flex-col items-center justify-center space-y-8 w-full px-6">
                 <a href="#about" class="text-xl tracking-[0.2em] uppercase text-luxe-dark hover:text-luxe-secondary transition-colors whitespace-nowrap text-center mobile-link">Σχετικα με εμενα</a>
@@ -144,42 +122,34 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="relative h-screen w-full flex items-end justify-start overflow-hidden bg-luxe-light">
-        <div class="absolute inset-0 z-0 pointer-events-none">
-            <!-- Υδατογράφημα (Στατικό & Αχνό) -->
+        <div class="absolute inset-0 z-0 pointer-events-none bg-luxe-dark">
             <img src="https://raw.githubusercontent.com/agelmet/PAPAGEWRGIOU/refs/heads/main/heress.jpg" 
                  alt="" 
-                 class="w-full h-full object-cover object-center opacity-[0.15] mix-blend-multiply"
+                 class="w-full h-full object-cover object-center opacity-[0.15] mix-blend-screen"
                  aria-hidden="true">
         </div>
         
-        <!-- Subtle gradient to ensure text readability -->
-        <div class="absolute inset-0 z-10 bg-gradient-to-t from-luxe-light via-luxe-light/30 to-transparent pointer-events-none"></div>
-        
         <div class="relative z-20 px-8 lg:px-16 pb-24 md:pb-32 w-full max-w-screen-2xl mx-auto">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-luxe-dark leading-tight md:leading-snug text-balance animate-fade-in-up" style="animation-delay: 0.2s; opacity: 0;">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-tight md:leading-snug text-balance animate-fade-in-up" style="animation-delay: 0.2s; opacity: 0;">
                 Παπαγεωργίου Εύα,<br>Ψυχολόγος - Ψυχοθεραπεύτρια
             </h1>
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="py-24 lg:py-32 px-6 lg:px-12 bg-white relative">
         <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
             <div class="lg:col-span-5 relative reveal w-full max-w-md mx-auto lg:max-w-full">
-                <!-- Κάνουμε και την εικόνα του About clickable -->
                 <button class="w-full text-left aspect-[3/4] relative overflow-hidden animate-glow-pulse shadow-xl outline-none group cursor-zoom-in block" onclick="openLightbox('https://github.com/agelmet/PAPAGEWRGIOU/blob/main/papge.png?raw=true')">
                     <img src="https://github.com/agelmet/PAPAGEWRGIOU/blob/main/papge.png?raw=true" 
                          alt="Παπαγεωργίου Εύα" 
-                         class="w-full h-full object-cover object-top animate-float transform group-hover:scale-[1.03] transition-transform duration-1000 origin-center grayscale-[10%]">
+                         class="w-full h-full object-cover object-top transform group-hover:scale-[1.03] transition-transform duration-1000 origin-center grayscale-[10%]">
                     <div class="absolute inset-0 border border-luxe-primary/5 pointer-events-none mix-blend-overlay"></div>
                     <div class="absolute inset-0 bg-luxe-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[1px]">
                         <i data-lucide="zoom-in" class="w-8 h-8 text-white drop-shadow-md"></i>
                     </div>
                 </button>
-                <div class="absolute -z-10 top-6 -right-6 lg:top-10 lg:-right-10 w-full h-full border border-luxe-secondary/30 animate-float" style="animation-delay: 1s;"></div>
             </div>
             
             <div class="lg:col-span-7 reveal delay-200">
@@ -206,7 +176,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="py-24 lg:py-32 px-6 lg:px-12 bg-luxe-light border-y border-luxe-border/50">
         <div class="max-w-4xl mx-auto text-center reveal">
             <h2 class="text-4xl md:text-5xl font-serif text-luxe-dark mb-16">Υπηρεσίες</h2>
@@ -236,7 +205,6 @@
         </div>
     </section>
 
-    <!-- Systemic Psychotherapy Section -->
     <section id="systemic" class="py-24 lg:py-32 px-6 lg:px-12 bg-white relative overflow-hidden">
         <div class="max-w-screen-xl mx-auto">
             <div class="reveal mb-16 text-center max-w-3xl mx-auto">
@@ -254,7 +222,6 @@
         </div>
     </section>
 
-    <!-- Space Gallery Section -->
     <section id="space" class="py-24 lg:py-32 px-6 lg:px-12 bg-luxe-light border-t border-luxe-border">
         <div class="max-w-screen-xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -302,7 +269,6 @@
         </div>
     </section>
 
-    <!-- Reviews Marquee -->
     <section class="py-24 bg-white overflow-hidden relative border-t border-luxe-border">
         <div class="max-w-screen-2xl mx-auto px-6 mb-12 text-center reveal">
             <h2 class="text-3xl font-serif text-luxe-dark mb-4">Εμπειρίες Θεραπευόμενων</h2>
@@ -310,14 +276,11 @@
         </div>
 
         <div class="w-full relative flex overflow-hidden group/marquee">
-            <!-- Fade masks -->
             <div class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
             <div class="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
             
-            <!-- Scrolling Container. The trick for perfect loop is w-max, translating exactly 50% with two identical halves -->
             <div class="flex w-max animate-marquee group-hover/marquee:[animation-play-state:paused]">
                 
-                <!-- Set 1 -->
                 <div class="flex gap-6 px-3 py-4">
                     <div class="w-80 md:w-96 bg-luxe-light p-8 border border-luxe-border flex-shrink-0 flex flex-col justify-between hover:border-luxe-secondary/40 transition-colors duration-300 rounded-sm">
                         <div>
@@ -430,7 +393,6 @@
                     </div>
                 </div>
 
-                <!-- Set 2 (Exact Duplicate for animation) -->
                 <div class="flex gap-6 px-3 py-4" aria-hidden="true">
                     <div class="w-80 md:w-96 bg-luxe-light p-8 border border-luxe-border flex-shrink-0 flex flex-col justify-between hover:border-luxe-secondary/40 transition-colors duration-300 rounded-sm">
                         <div>
@@ -542,11 +504,11 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contact -->
     <footer id="contact" class="bg-luxe-primary text-white pt-24 pb-8 relative overflow-hidden">
         <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 relative z-10">
             
@@ -575,7 +537,6 @@
                     </ul>
                 </div>
 
-                <!-- Google Map Embed -->
                 <div class="lg:col-span-3 reveal delay-100 h-full w-full rounded-sm overflow-hidden border border-luxe-secondary/20 shadow-lg min-h-[300px]">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.8427954955745!2d22.9377488!3d40.6375626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a83908db7c376f%3A0xc47e30d12e967a54!2zTGVvbnRvcyBTb2ZvdSA2LCBUaGVzc2Fsb25pa2kgNTQ2IDI2!5e0!3m2!1sen!2sgr!4v1700000000000!5m2!1sen!2sgr" 
@@ -591,7 +552,7 @@
             </div>
 
             <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-luxe-secondary/20 text-xs font-light text-luxe-secondary reveal delay-200">
-                <p>&copy; 2026 Παπαγεωργίου Εύα. All rights reserved.</p>
+                <p>© 2026 Παπαγεωργίου Εύα. All rights reserved.</p>
                 <p>
                     Designed by <a href="https://advonmedia.com" target="_blank" rel="noopener" class="text-white hover:text-luxe-secondary transition-colors border-b border-transparent hover:border-white pb-0.5">Advon Media</a>
                 </p>
@@ -599,15 +560,13 @@
         </div>
     </footer>
 
-    <!-- Lightbox Element -->
-    <div id="lightbox" class="fixed inset-0 z-[100] flex items-center justify-center cursor-zoom-out opacity-0 pointer-events-none transition-opacity duration-300 bg-luxe-dark/95 backdrop-blur-sm" onclick="closeLightbox()">
+    <div id="lightbox" class="fixed inset-0 z-[100] flex items-center justify-center cursor-zoom-out opacity-0 invisible transition-all duration-300 bg-luxe-dark/95 backdrop-blur-sm" onclick="closeLightbox()">
         <button class="absolute top-6 right-6 md:top-8 md:right-8 text-white/50 hover:text-white transition-colors z-[101]" aria-label="Close">
             <i data-lucide="x" class="w-10 h-10 stroke-[1.5]"></i>
         </button>
-        <img id="lightbox-img" src="" alt="Full View" class="w-auto h-auto max-w-[95vw] max-h-[95vh] object-contain shadow-2xl cursor-default rounded-sm transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+        <img id="lightbox-img" src="" alt="Πλήρης Προβολή" class="w-auto h-auto max-w-[95vw] max-h-[95vh] object-contain shadow-2xl cursor-default rounded-sm transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
     </div>
 
-    <!-- Scripts -->
     <script>
         // Initialize Icons
         lucide.createIcons();
@@ -624,7 +583,7 @@
             }
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle - Uses absolute robust opacity toggling
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -639,7 +598,7 @@
                 // Show Menu
                 mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
                 mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
-                document.body.style.overflow = 'hidden';
+                document.body.classList.add('overflow-hidden');
                 
                 // Animate icons
                 menuIcon.classList.remove('scale-100', 'opacity-100');
@@ -650,7 +609,7 @@
                 // Hide Menu
                 mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
                 mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-                document.body.style.overflow = '';
+                document.body.classList.remove('overflow-hidden');
                 
                 // Animate icons
                 menuIcon.classList.add('scale-100', 'opacity-100');
@@ -685,15 +644,15 @@
             observer.observe(el);
         });
 
-        // Lightbox
+        // Robust Full Screen Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
         function openLightbox(src) {
             lightboxImg.src = src;
-            lightbox.classList.remove('opacity-0', 'pointer-events-none');
-            lightbox.classList.add('opacity-100', 'pointer-events-auto');
-            document.body.style.overflow = 'hidden';
+            lightbox.classList.remove('invisible', 'opacity-0');
+            lightbox.classList.add('opacity-100');
+            document.body.classList.add('overflow-hidden'); // Lock body scrolling
             
             setTimeout(() => {
                 lightboxImg.classList.remove('scale-95');
@@ -702,19 +661,20 @@
         }
 
         function closeLightbox() {
-            lightbox.classList.remove('opacity-100', 'pointer-events-auto');
-            lightbox.classList.add('opacity-0', 'pointer-events-none');
+            lightbox.classList.remove('opacity-100');
+            lightbox.classList.add('opacity-0');
             lightboxImg.classList.remove('scale-100');
             lightboxImg.classList.add('scale-95');
-            document.body.style.overflow = '';
+            document.body.classList.remove('overflow-hidden'); // Restore body scrolling
             
             setTimeout(() => {
+                lightbox.classList.add('invisible');
                 lightboxImg.src = '';
             }, 300);
         }
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('opacity-100')) {
+            if (e.key === 'Escape' && !lightbox.classList.contains('invisible')) {
                 closeLightbox();
             }
         });
